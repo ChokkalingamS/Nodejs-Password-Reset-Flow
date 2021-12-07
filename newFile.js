@@ -130,7 +130,7 @@ function Mail(token,Mailid) {
             pass:process.env.password
         }
     });
-    const link = `http://localhost:3000/forgotpassword/verify/${token}`;
+    const link = `https://pass-res-fl.netlify.app/forgotpassword/verify/${token}`;
     const mailOptions = {
         from: process.env.email,
         to: 'chokkalingam1707@gmail.com',
