@@ -40,7 +40,7 @@ router.route('/login')
         return response.status(400).send({ msg: 'Invalid login credentials : mailid' });
     }
 
-    const dbPassword = data.Password;
+    const dbPassword =await data.Password;
     const passwordMatch = await bcrypt.compare(Password, dbPassword);
   
     

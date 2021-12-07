@@ -13,8 +13,8 @@ app.use('/users',userRouter)
 dotenv.config()
 const PORT=process.env.PORT;
 const MONGO_URL=process.env.MONGO_URL
-
-
+console.log(process.env.PORT);
+console.log( MONGO_URL);
 
 app.get('/',(request,response)=>{
     response.send({msg:'Password'})
