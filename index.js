@@ -4,15 +4,16 @@ import {userRouter} from './newFile.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
+dotenv.config()
+const PORT=process.env.PORT;
+const MONGO_URL=process.env.MONGO_URL
+
 export const app=express();
 app.use(cors());
 app.use(express.json())
 app.use('/users',userRouter)
 
 
-dotenv.config()
-const PORT=process.env.PORT;
-const MONGO_URL=process.env.MONGO_URL
 console.log(process.env.PORT);
 console.log( MONGO_URL);
 
