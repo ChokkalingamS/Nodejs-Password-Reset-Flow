@@ -66,7 +66,7 @@ router.route('/forgotpassword')
     {
         return response.status(400).send({ msg: 'Invalid login credentials : mailid' });
     }
-    const token=jwt.sign({id:data._id},process.env.key);
+    const token= jwt.sign({id:data._id},process.env.key);
 
     const replacePassword=await passwordUpdate({Mailid,token})
     // console.log(replacePassword);
