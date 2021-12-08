@@ -2,32 +2,38 @@ import bcrypt from "bcrypt";
 import { client } from "./index.js";
 
 
+// Hashed Function
 async function passwordGenerator(Password) {
     const rounds = 10;
     const salt = await bcrypt.genSalt(rounds);
     const hashedPassword = await bcrypt.hash(Password, salt);
-    // console.log(hashedPassword);
     return hashedPassword;
 }
+
+
+// Getting user from the DB
 async function getuser(userdata) {
     let result = await client.db('movielist').collection('users').findOne( userdata );
     return result;
 }
+
+
+// Creating data for the user
 async function createuser(data) {
     return await client.db('movielist').collection('users').insertOne(data);
 }
 
+
+// After forgot password,here the token will update the existing password
 async function passwordUpdate(userdata)
 {
     let {Mailid,token}=userdata
-    // console.log(userdata);
-    // console.log(token,"token");
-
     let result=await client.db('movielist').collection('users').updateOne({Mailid},{$set:{Password:token}})
     return result
 }
 
 
+// New Password will be updated
 async function updateuser(userdata)
 {
     const{Mailid,Password}=userdata
@@ -36,6 +42,7 @@ async function updateuser(userdata)
 }
 
 
+// To update the user last visited time & date
 async function updateuserlastseen(userdata)
 {
     const{Mailid,date,LastVisited}=userdata
