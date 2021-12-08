@@ -14,11 +14,9 @@ app.use(express.json())
 app.use('/users',userRouter)
 
 
-console.log(process.env.PORT);
-console.log( MONGO_URL);
 
 app.get('/',(request,response)=>{
-    response.send({msg:'Password'})
+    response.send({msg:'Password Reset Flow'})
 });
 
 

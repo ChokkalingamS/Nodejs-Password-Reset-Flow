@@ -21,7 +21,7 @@ async function passwordUpdate(userdata)
 {
     let {Mailid,token}=userdata
     // console.log(userdata);
-    console.log(token,"token");
+    // console.log(token,"token");
 
     let result=await client.db('movielist').collection('users').updateOne({Mailid},{$set:{Password:token}})
     return result
@@ -36,10 +36,18 @@ async function updateuser(userdata)
 }
 
 
+async function updateuserlastseen(userdata)
+{
+    const{Mailid,date,LastVisited}=userdata
+    let result=await client.db('movielist').collection('users').updateOne({Mailid},{$set:{LastVisited:date}})
+    return result;
+}
+
 
 export{passwordGenerator,
     getuser,
    createuser,
    passwordUpdate,
-   updateuser
+   updateuser,
+   updateuserlastseen
 }
