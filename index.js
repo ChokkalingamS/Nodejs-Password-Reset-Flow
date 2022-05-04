@@ -1,6 +1,7 @@
 import express from "express";
 import {MongoClient} from 'mongodb'
 import {userRouter} from './newFile.js'
+import {facebookLeadAd} from './facebooklead.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
@@ -20,7 +21,7 @@ app.use(cors());
 app.use(express.json())
 // Router
 app.use('/users',userRouter)
-
+app.use('/webhook',facebookLeadAd)
 
 // Home page
 app.get('/',(request,response)=>{
